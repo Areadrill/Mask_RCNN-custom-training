@@ -61,7 +61,7 @@ class CustomConfig(Config):
     """
 
     # CHANGE THIS
-    NAME = "weeds"
+    NAME = "custom"
 
     # CHANGE THIS
     IMAGES_PER_GPU = 1
@@ -92,8 +92,8 @@ class CustomDataset(utils.Dataset):
         """
         # CHANGE THIS
         # Add classes according to the numbe of classes required to detect
-        self.add_class("custom", 1, "weed")
-        self.add_class("custom", 2, "crop")
+        self.add_class("custom", 1, "label_1")
+        self.add_class("custom", 2, "label_2")
 
         # Train or validation dataset?
         assert subset in ["train", "val"]
@@ -144,9 +144,9 @@ class CustomDataset(utils.Dataset):
             #Add the classes according to the requirement
             for n in custom:
                 try:
-                    if n['weed']=='weed':
+                    if n['label']=='label_1':
                         num_ids.append(1)
-                    elif n['weed']=='crop':
+                    elif n['label']=='label_2':
                         num_ids.append(2)
                 except:
                     pass
